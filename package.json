@@ -136,8 +136,8 @@
     "@vitest/coverage-v8": "^4.1.0",
     "@vitest/ui": "^4.1.0",
     "autoprefixer": "^10.4.21",
-    "drizzle-kit": "^0.31.10",
-    "esbuild": "^0.28.0",
+    "drizzle-kit": "^0.31.0",
+    "esbuild": "^0.25.5",
     "eslint": "^10.0.3",
     "eslint-plugin-security": "^4.0.0",
     "jsdom": "^29.0.2",
@@ -151,5 +151,9 @@
   },
   "optionalDependencies": {
     "bufferutil": "^4.0.8"
+  },
+  "overrides": {
+    "yaml": ">=2.8.3",
+    "fast-xml-parser": ">=5.7.0"
   }
 }
