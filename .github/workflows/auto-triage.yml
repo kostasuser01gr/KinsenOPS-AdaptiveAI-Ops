@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     if: contains(join(github.event.issue.labels.*.name, ','), 'type:finding') || github.event_name == 'schedule'
     steps:
-      - uses: actions/github-script@v8
+      - uses: actions/github-script@v9
         with:
           script: |
             async function processIssue(issue) {
