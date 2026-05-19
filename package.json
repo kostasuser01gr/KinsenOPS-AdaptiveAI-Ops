@@ -84,7 +84,7 @@
     "input-otp": "^1.4.2",
     "ioredis": "^5.10.1",
     "isomorphic-dompurify": "^3.8.0",
-    "lucide-react": "^0.545.0",
+    "lucide-react": "^1.16.0",
     "memorystore": "^1.6.7",
     "passport": "^0.7.0",
     "passport-local": "^1.0.0",
