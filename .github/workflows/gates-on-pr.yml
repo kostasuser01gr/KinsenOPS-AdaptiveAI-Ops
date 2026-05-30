@@ -15,6 +15,7 @@ permissions:
 
 jobs:
   build:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: Build (G1)
     runs-on: ubuntu-latest
     steps:
@@ -33,6 +34,7 @@ jobs:
           retention-days: 30
 
   lint:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: Lint (G2)
     runs-on: ubuntu-latest
     steps:
@@ -51,6 +53,7 @@ jobs:
           retention-days: 30
 
   typecheck:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: Typecheck (G3)
     runs-on: ubuntu-latest
     steps:
@@ -69,6 +72,7 @@ jobs:
           retention-days: 30
 
   test:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: Test (G4)
     runs-on: ubuntu-latest
     steps:
@@ -87,6 +91,7 @@ jobs:
           retention-days: 30
 
   e2e:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: E2E (G5)
     runs-on: ubuntu-latest
     services:
@@ -140,6 +145,7 @@ jobs:
           retention-days: 30
 
   coverage:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: Coverage (G6)
     runs-on: ubuntu-latest
     steps:
@@ -160,6 +166,7 @@ jobs:
           retention-days: 30
 
   audit:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: Audit (G8)
     runs-on: ubuntu-latest
     steps:
@@ -178,6 +185,7 @@ jobs:
           retention-days: 30
 
   sast:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: SAST (G9)
     runs-on: ubuntu-latest
     steps:
@@ -191,6 +199,7 @@ jobs:
           retention-days: 30
 
   secrets:
+    if: github.event_name == 'pull_request' || vars.RUN_BLACK_VAULT_GATES == 'true'
     name: Secrets (G10)
     runs-on: ubuntu-latest
     steps:
@@ -213,6 +222,10 @@ jobs:
     steps:
       - name: Check results
         run: |
+          if [[ "${{ github.event_name }}" == "push" && "${{ vars.RUN_BLACK_VAULT_GATES }}" != "true" ]]; then
+            echo "Black Vault gates skipped on push; set RUN_BLACK_VAULT_GATES=true to opt in."
+            exit 0
+          fi
           echo "Build: ${{ needs.build.result }}"
           echo "Lint: ${{ needs.lint.result }}"
           echo "Typecheck: ${{ needs.typecheck.result }}"
