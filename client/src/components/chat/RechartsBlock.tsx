@@ -114,7 +114,7 @@ export function RechartsBlock({ block }: { block: RechartsBlockData }) {
               innerRadius={innerR}
               outerRadius={100}
               paddingAngle={2}
-              label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+              label={({ name, percent }) => `${name} ${((percent ?? 0) * 100).toFixed(0)}%`}
             >
               {block.data.map((_entry, i) => (
                 <Cell key={i} fill={block.series[i]?.color || DEFAULT_COLORS[i % DEFAULT_COLORS.length]} />
