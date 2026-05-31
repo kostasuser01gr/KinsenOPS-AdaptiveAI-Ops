@@ -132,7 +132,7 @@ describe("requireRole middleware", () => {
 describe("user_sessions migration", () => {
   it("creates the explicit session store table and expiry index", () => {
     const sql = readFileSync(
-      "supabase/migrations/20260414000000_023_user_sessions.sql",
+      "supabase/migrations/20260414000000_025_user_sessions.sql",
       "utf8",
     );
 
