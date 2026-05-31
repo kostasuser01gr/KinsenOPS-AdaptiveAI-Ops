@@ -7,6 +7,32 @@ cd "$ROOT_DIR"
 
 mkdir -p .black-vault
 
+list_files() {
+  if command -v rg >/dev/null 2>&1; then
+    rg --files --hidden \
+      -g '!.git/**' \
+      -g '!.black-vault/**' \
+      -g '!**/__pycache__/**' \
+      -g '!**/*.pyc' \
+      -g '!artifacts/**' \
+      -g '!coverage/**' \
+      -g '!dist/**' \
+      -g '!node_modules/**'
+    return
+  fi
+
+  find . -type f \
+    -not -path './.git/*' \
+    -not -path './.black-vault/*' \
+    -not -path './*/__pycache__/*' \
+    -not -name '*.pyc' \
+    -not -path './artifacts/*' \
+    -not -path './coverage/*' \
+    -not -path './dist/*' \
+    -not -path './node_modules/*' \
+    -print | sed 's#^\./##'
+}
+
 classify_file() {
   case "$1" in
     server/*|api/*)
@@ -46,15 +72,7 @@ risk_for_file() {
 
 {
   printf 'filepath\ttotal_lines\tclassification\texclusion_reason\trisk_level\n'
-  rg --files --hidden \
-    -g '!.git/**' \
-    -g '!.black-vault/**' \
-    -g '!**/__pycache__/**' \
-    -g '!**/*.pyc' \
-    -g '!artifacts/**' \
-    -g '!coverage/**' \
-    -g '!dist/**' \
-    -g '!node_modules/**' | sort | while IFS= read -r file; do
+  list_files | sort | while IFS= read -r file; do
     lines="$(wc -l < "$file" 2>/dev/null | awk '{print $1}')"
     lines="${lines:-0}"
     printf '%s\t%s\t%s\t%s\t%s\n' \

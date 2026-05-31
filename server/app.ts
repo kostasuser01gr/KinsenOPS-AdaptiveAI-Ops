@@ -135,19 +135,16 @@ function configureApiMiddleware(app: Express): void {
 function registerOperationalRoutes(app: Express): void {
   app.get("/healthz", async (_req, res) => {
     res.setHeader("Cache-Control", "no-store");
-    let dbOk = false;
 
-    try {
+    const dbOk = await (async () => {
       const client = await pool.connect();
       try {
         await client.query("SELECT 1");
-        dbOk = true;
+        return true;
       } finally {
         client.release();
       }
-    } catch {
-      dbOk = false;
-    }
+    })().catch(() => false);
 
     const status = dbOk ? "ok" : "degraded";
     res.status(dbOk ? 200 : 503).json({

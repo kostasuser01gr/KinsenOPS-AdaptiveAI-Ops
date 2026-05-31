@@ -301,10 +301,18 @@ describe("observability state surface", () => {
     expect(typeof state.lastDurationMs).toBe("number");
   });
 
-  it("singleton taskRunner exposes all 6 registered tasks", async () => {
+  it("singleton taskRunner exposes all registered tasks", async () => {
     const { taskRunner } = await import("../../server/tasks/index.js");
     const ids = taskRunner.getStates().map((s) => s.id).sort();
-    expect(ids).toEqual(["anomaly-detection", "connector-sync", "export-cleanup", "export-processor", "kpi-snapshots", "sla-breach-check"]);
+    expect(ids).toEqual([
+      "anomaly-detection",
+      "connector-sync",
+      "export-cleanup",
+      "export-processor",
+      "kpi-snapshots",
+      "predictive-maintenance",
+      "sla-breach-check",
+    ]);
   });
 
   it("disabled tasks show enabled=false", async () => {

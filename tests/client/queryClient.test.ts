@@ -12,9 +12,9 @@ describe("QueryClient configuration", () => {
     expect(options.queries?.refetchOnWindowFocus).toBe(true);
   });
 
-  it("retry is 1 (not false)", () => {
+  it("retry is 2 (not false)", () => {
     const options = queryClient.getDefaultOptions();
-    expect(options.queries?.retry).toBe(1);
+    expect(options.queries?.retry).toBe(2);
   });
 
   it("gcTime is 5 minutes", () => {

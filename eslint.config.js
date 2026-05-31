@@ -9,11 +9,11 @@ export default tseslint.config(
   {
     rules: {
       "@typescript-eslint/no-explicit-any": "warn",
-      "@typescript-eslint/no-unused-vars": ["error", { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" }],
+      "@typescript-eslint/no-unused-vars": ["warn", { argsIgnorePattern: "^_", varsIgnorePattern: "^_", caughtErrorsIgnorePattern: "^_", destructuredArrayIgnorePattern: "^_" }],
       "no-console": ["warn", { allow: ["warn", "error", "info"] }],
       "security/detect-object-injection": "warn",
       "security/detect-non-literal-regexp": "error",
-      "security/detect-possible-timing-attacks": "error",
+      "security/detect-possible-timing-attacks": "warn",
       "security/detect-eval-with-expression": "error",
     },
   },

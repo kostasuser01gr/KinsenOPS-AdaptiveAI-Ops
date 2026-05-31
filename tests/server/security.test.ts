@@ -1068,7 +1068,7 @@ describe("CC-4: Error handler ordering", () => {
       "utf-8"
     );
     const staticIdx = indexSrc.indexOf("serveStatic(app)");
-    const errorHandlerIdx = indexSrc.indexOf("app.use((err: Error &");
+    const errorHandlerIdx = indexSrc.indexOf("installGlobalErrorHandler(app)");
     // Both should exist
     expect(staticIdx).toBeGreaterThan(-1);
     expect(errorHandlerIdx).toBeGreaterThan(-1);

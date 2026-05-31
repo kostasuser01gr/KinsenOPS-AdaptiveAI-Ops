@@ -140,9 +140,10 @@ export function validateSql(sql: string): { ok: true } | { ok: false; reason: st
     return { ok: false, reason: "only SELECT / WITH-SELECT statements allowed" };
   }
 
-  for (const keyword of FORBIDDEN_KEYWORDS) {
-    const pattern = new RegExp(`\\b${keyword.replace(/_/g, "_")}\\b`);
-    if (pattern.test(lower)) {
+  const sqlWords: string[] = lower.match(/[a-z_]+/g) ?? [];
+  const forbiddenKeywords: readonly string[] = FORBIDDEN_KEYWORDS;
+  for (const keyword of forbiddenKeywords) {
+    if (sqlWords.includes(keyword)) {
       return { ok: false, reason: `forbidden keyword: ${keyword}` };
     }
   }
