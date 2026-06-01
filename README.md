@@ -1,4 +1,12 @@
-AI Operations Platform for Car Rental Companies
+# KinsenOPS AdaptiveAI Ops
+
+[![Gates](https://github.com/kostasuser01gr/KinsenOPS-AdaptiveAI-Ops/actions/workflows/gates-on-pr.yml/badge.svg)](https://github.com/kostasuser01gr/KinsenOPS-AdaptiveAI-Ops/actions/workflows/gates-on-pr.yml)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org)
+[![React](https://img.shields.io/badge/React-19-61DAFB)](https://react.dev)
+
+AI operations platform for car rental companies, built as a chat-first command center for fleet readiness, imports, shifts, washer workflows, reports, and adaptive business automation.
+
+This repository is portfolio-ready: the README explains the product intent, the CI gates validate the implementation, and the public story focuses on the real business experience the system demonstrates.
 
 ## Quick Start
 
