@@ -140,7 +140,7 @@ run_id = sys.argv[2]
 summary = {"run_id": run_id, "timestamp": datetime.now(timezone.utc).isoformat(), "gates": {}}
 
 for log_path in sorted(artifact_dir.glob("G*.log")):
-    text = log_path.read_text()
+    text = log_path.read_text(errors="replace")
     if "FAIL (" in text:
         status = "FAIL"
     elif "PASS" in text:

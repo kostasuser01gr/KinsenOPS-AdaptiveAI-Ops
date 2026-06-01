@@ -21,8 +21,12 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 22
           cache: npm
+      - name: Install hardening toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ripgrep zsh
       - run: bash scripts/ci/setup-toolchain.sh nodejs
       - run: bash scripts/hardening/build-inventory.sh
       - run: bash scripts/run-all-gates.sh
