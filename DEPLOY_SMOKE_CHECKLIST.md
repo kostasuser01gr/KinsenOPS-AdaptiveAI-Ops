@@ -196,7 +196,7 @@ curl -sf -o /dev/null -w "%{http_code}" \
   -H "Upgrade: websocket" \
   -H "Connection: Upgrade" \
   -H "Sec-WebSocket-Version: 13" \
-  -H "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==" \
+  -H "Sec-WebSocket-Key: $(openssl rand -base64 16)" \
   "$BASE_URL/ws"
 ```
 - **Expected:** `101` Switching Protocols
