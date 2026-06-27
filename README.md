@@ -374,3 +374,19 @@ Most operational tools in this space are either too rigid, too fragmented, or to
 Instead of asking teams to adapt to software that stays static, the project is built around the opposite idea: software that can adapt to the team.
 
 That is the core idea behind the platform.
+
+---
+
+## Author
+
+**Konstantinos Foskolakis**
+Full-stack engineer — Heraklion, Crete, Greece
+[github.com/kostasuser01gr](https://github.com/kostasuser01gr)
+
+---
+
+## Portfolio Positioning
+
+This project demonstrates the engineering depth required to build a chat-first operational command center: real-time Supabase sync, role-based access across operator/manager/admin surfaces, AI-assisted workflow routing, shift and fleet state machines, and a CI gate suite covering Gitleaks, CodeQL, dependency audit, and Playwright E2E. The chat-first design is an architectural decision — it reflects how operational teams actually communicate, and builds structure on top of that pattern rather than replacing it with a rigid admin interface. Privacy-aware deployment is enforced: demo data replaces all real operational records, and the pre-commit hooks and .gitleaksignore prevent accidental secret exposure.
+
+*Built as a portfolio-grade chat-first operations platform. Estimated implementation effort for the current public version: 6–10 focused development days.*
