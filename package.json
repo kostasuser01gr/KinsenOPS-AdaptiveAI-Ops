@@ -93,7 +93,7 @@
     "rate-limit-redis": "^4.3.1",
     "react": "^19.2.5",
     "react-day-picker": "^9.14.0",
-    "react-dom": "^19.2.4",
+    "react-dom": "^19.2.7",
     "react-grid-layout": "^2.2.3",
     "react-hook-form": "^7.66.0",
     "react-resizable-panels": "^2.1.9",
